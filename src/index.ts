@@ -3,8 +3,8 @@ import 'module-alias/register';
 import { initPostgres } from "./config/sequelize";
 import { initMongo } from "./config/mongoose";
 import { initRedis } from "./config/redis";
-import { runAllSeeds } from "@/seeds";
-import { app } from "@/app";
+import { runAllSeeds } from "./seeds";
+import { app } from "./app";
 
 (async () => {
   try {

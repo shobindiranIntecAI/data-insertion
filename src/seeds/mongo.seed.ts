@@ -1,4 +1,4 @@
-import { Product } from "@/models/mongo";
+import { Product } from "../models/mongo";
 
 export async function seedMongo() {
   const seeds = [

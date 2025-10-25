@@ -1,4 +1,4 @@
-import { User } from "@/models/postgres";
+import { User } from "../models/postgres";
 
 export async function seedPostgres() {
   await User.sync({ alter: true });
