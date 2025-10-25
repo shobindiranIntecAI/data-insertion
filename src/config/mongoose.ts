@@ -4,7 +4,7 @@ import { MONGO_URI } from "./env";
 export async function initMongo() {
 
   if(!MONGO_URI) throw Error("Missing MONGO_URI env");
-  const isDocumentDB = MONGO_URI.includes("amazonaws.com") || process.env.DB_TYPE === "documentdb";
+  const isDocumentDB = MONGO_URI.includes("amazonaws.com");
 
   const options: any = isDocumentDB
   ? {
