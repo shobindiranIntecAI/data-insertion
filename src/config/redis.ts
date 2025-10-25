@@ -13,7 +13,6 @@ export async function initRedis() {
     ...(isAWS?{
       socket: {
       tls: true, // Enable TLS only for AWS Redis
-      ca: fs.readFileSync("./global-bundle.pem").toString(),
       }
     }:{})
   });
