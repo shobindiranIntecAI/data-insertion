@@ -9,8 +9,8 @@ export async function initMongo() {
 
   const options: any = isDocumentDB
   ? {
-      ssl: true,
-      sslCA: fs.readFileSync("./global-bundle.pem"),
+      tls: true,
+      tlsCAFile: fs.readFileSync("./global-bundle.pem"),
     }
 : {};
 
