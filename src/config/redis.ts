@@ -1,10 +1,22 @@
 import { createClient } from "redis";
 import { REDIS_URL } from "./env";
+import fs from "fs";
 
 export async function initRedis() {
   if(!REDIS_URL) throw Error("Missing REDIS_URL env");
 
-  const client = createClient({ url: REDIS_URL });
+  
+  const isAWS = REDIS_URL.includes("amazonaws.com");
+
+  const client = createClient({ 
+    url: REDIS_URL,
+    ...(isAWS?{
+      socket: {
+      tls: true, // Enable TLS only for AWS Redis
+      ca: fs.readFileSync("./global-bundle.pem").toString(),
+      }
+    }:{})
+  });
   await client.connect();
   console.log("🔥 Redis connected");
   return client;
