@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import fs from "fs";
 import { MONGO_URI } from "./env";
 
 export async function initMongo() {
@@ -10,7 +9,7 @@ export async function initMongo() {
   const options: any = isDocumentDB
   ? {
       tls: true,
-      tlsCAFile: fs.readFileSync("./global-bundle.pem"),
+      tlsCAFile:"./global-bundle.pem",
     }
 : {};
 
