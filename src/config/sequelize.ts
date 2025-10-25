@@ -1,6 +1,7 @@
 import { Sequelize } from "sequelize";
 import { PG_URI } from "./env";
 import { UserModel } from "../models/postgres/user";
+import fs from "fs";
 
 
 if(!PG_URI) throw Error("Missing PG_URI env");
@@ -13,7 +14,7 @@ export const sequelize = new Sequelize(PG_URI, {
     dialectOptions:{
       ssl: {
         require: true,
-        ca: "./rds-combined-ca-bundle.pem",
+        ca: fs.readFileSync("./global-bundle.pem").toString(),
       }
     }
   }:{})
