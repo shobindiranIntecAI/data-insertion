@@ -1,14 +1,13 @@
-// src/seeds/index.ts
-import { seedPostgres } from "./pg.seed";
-import { seedMongo } from "./mongo.seed";
+// import { seedPostgres } from "./pg.seed";
+// import { seedMongo } from "./mongo.seed";
 import { seedRedis } from "./redis.seed";
 
 export async function runAllSeeds({ redis }: { redis: any }) {
   console.log("🌱 Running all seeds...");
 
   await Promise.all([
-    seedPostgres(),
-    seedMongo(),
+    // seedPostgres(),
+    // seedMongo(),
     seedRedis(redis)
   ]);
 

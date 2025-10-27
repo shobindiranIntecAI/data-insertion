@@ -1,7 +1,7 @@
 import "dotenv/config";
 import 'module-alias/register';
-import { initPostgres } from "./config/sequelize";
-import { initMongo } from "./config/mongoose";
+// import { initPostgres } from "./config/sequelize";
+// import { initMongo } from "./config/mongoose";
 import { initRedis } from "./config/redis";
 import { runAllSeeds } from "./seeds";
 import { app } from "./app";
@@ -10,9 +10,9 @@ import { app } from "./app";
   try {
     console.log("🚀 Server starting...");
 
-    const [_pg, _mongo, redis] = await Promise.all([
-      initPostgres(),
-      initMongo(),
+    const [redis] = await Promise.all([
+      // initPostgres(),
+      // initMongo(),
       initRedis(),
     ]);
 
